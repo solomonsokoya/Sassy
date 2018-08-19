@@ -70,7 +70,8 @@ function hideQuestion() {
 
 //Transform to Create Shake Motion
 function transform (x,y){
-  formBox.style.transfrom = `translate(${x}px, ${y}px)`;
+  formBox.style.transform = `translate(${x}px, ${y}px)`;
+
 }
 
 //Validate field
@@ -90,6 +91,8 @@ function inputFail(){
 
   for(let i = 0; i < 6; i++){
     setTimeout(transform, shakeTime * i, ((i % 2) * 2 - 1) * 20, 0);
+    setTimeout(transform, shakeTime * 6, 0, 0);
+    inputField.focus();
   }
 }
 
