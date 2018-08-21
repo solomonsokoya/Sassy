@@ -2,7 +2,7 @@
 
 ## Overview
 
-Wanted to work on SASS, CSS, HTML, JavaScript and Transition with CSS (responsive design).
+Wanted to work on SASS, CSS, HTML, JavaScript and Transitions with CSS (responsive design).
 
 ## Preview
 ![](Images/preview.png)
