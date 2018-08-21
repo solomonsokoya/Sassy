@@ -25,6 +25,12 @@ const progress = document.querySelector('#progress-bar');
 
 //EVENTS
 
+//Input field enter button
+inputField.addEventListener('keyup', e => {
+  if (e.keyCode == 13) {
+    validate();
+  }
+});
 //Get Question On DOM Load
 document.addEventListener('DOMContentLoaded', getQuestion);
 
@@ -99,5 +105,42 @@ function inputFail(){
 // Field Input Passed
 
 function inputPass(){
+  formBox.className = '';
+  setTimeout(transform, shakeTime * 0, 0, 10);
+  setTimeout(transform, shakeTime * 1, 0, 10);
 
+  questions[position].answer = inputField.value;
+  //Increment Postion
+  position++;
+
+  //If new Question, hide current and get nextBtn
+  if(questions[position]){
+    hideQuestion();
+    getQuestion();
+  }else{
+    // Remove If No More Questions
+    hideQuestion();
+    formBox.className = 'close';
+    progress.style.width = '100%';
+
+    // Form Complete
+    formComplete();
+  }
+}
+
+// All Fields Complete - Show h1 end
+function formComplete() {
+  const h1 = document.createElement('h1');
+  h1.classList.add('end');
+  h1.appendChild(
+    document.createTextNode(
+      `Thanks ${
+        questions[0].answer
+      } You are registered and will get an email shortly`
+    )
+  );
+  setTimeout(() => {
+    formBox.parentElement.appendChild(h1);
+    setTimeout(() => (h1.style.opacity = 1), 50);
+  }, 1000);
 }
